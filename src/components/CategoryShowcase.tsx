@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Sparkles, CheckCircle2 } from "lucide-react";
-import { CATEGORIES } from "@/data/company";
 
 export default function CategoryShowcase() {
   return (

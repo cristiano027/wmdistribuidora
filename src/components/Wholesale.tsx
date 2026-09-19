@@ -1,6 +1,6 @@
 "use client";
 
-import { MessageCircle, CheckCircle2, TrendingUp, Sparkles, Building2, PackageCheck } from "lucide-react";
+import { MessageCircle, CheckCircle2, TrendingUp, Building2, PackageCheck } from "lucide-react";
 import { COMPANY_INFO } from "@/data/company";
 
 export default function Wholesale() {

@@ -51,7 +51,7 @@ export default function About() {
 
               <div className="p-4 rounded-2xl bg-wm-surface border border-wm-border text-center">
                 <span className="font-hand text-2xl text-wm-yellow block">
-                  Compromisso com o seu estoque ✨
+                  Compromisso com o seu estoque
                 </span>
               </div>
 

@@ -42,7 +42,7 @@ export default function Hero() {
 
               <div className="pt-2 flex items-center gap-3">
                 <span className="font-hand text-2xl sm:text-3xl text-wm-yellow -rotate-2 block">
-                  Do doce à festa, o mix mais completo do ES ✨
+                  Do doce à festa, o mix mais completo do ES
                 </span>
               </div>
             </div>
