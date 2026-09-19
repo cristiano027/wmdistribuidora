@@ -1,0 +1,7 @@
+[shell_environment_policy]
+inherit = "core"
+
+[shell_environment_policy.set]
+ANTHROPIC_BASE_URL = "http://localhost:20128"
+ANTHROPIC_AUTH_TOKEN = "sk-ba082a34377cae68-d32c04-2a04b229"
+ANTHROPIC_MODEL = "combo/gratis"

@@ -1,0 +1,171 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { MessageCircle, Menu, X, Sparkles } from "lucide-react";
+import { COMPANY_INFO } from "@/data/company";
+
+export default function Header() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 40);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const navLinks = [
+    { label: "Início", href: "#hero" },
+    { label: "Categorias", href: "#categorias" },
+    { label: "Variedade", href: "#variedade" },
+    { label: "Atacado", href: "#atacado" },
+    { label: "Produtos", href: "#produtos" },
+    { label: "Sobre a WM", href: "#sobre" },
+    { label: "Unidades", href: "#unidades" },
+  ];
+
+  return (
+    <>
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          isScrolled
+            ? "bg-white/95 backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.05)] py-3 border-b border-wm-border"
+            : "bg-transparent py-5"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between">
+            {/* Logo */}
+            <Link href="#hero" className="flex items-center gap-3 group">
+              <div className="relative h-12 w-32 sm:h-14 sm:w-40 transition-transform duration-300 group-hover:scale-105">
+                <Image
+                  src="/images/brand/logo-wm.png"
+                  alt="WM Distribuidora"
+                  fill
+                  sizes="(max-width: 768px) 140px, 180px"
+                  className="object-contain object-left"
+                  priority
+                />
+              </div>
+              <div className="hidden xl:block pl-3 border-l border-wm-border">
+                <span className="text-[11px] uppercase tracking-widest text-wm-text-muted font-medium block">
+                  Cariacica / ES
+                </span>
+                <span className="text-xs text-wm-black font-semibold block">
+                  Doces & Atacado
+                </span>
+              </div>
+            </Link>
+
+            {/* Desktop Navigation */}
+            <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="px-3.5 py-2 text-sm font-medium text-wm-black hover:text-wm-yellow rounded-full hover:bg-wm-yellow/10 transition-all"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+
+            {/* Actions & WhatsApp CTA */}
+            <div className="flex items-center gap-3">
+              <a
+                href={COMPANY_INFO.whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden sm:inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-wm-yellow hover:bg-wm-yellow-light text-wm-black text-sm font-semibold shadow-[0_8px_20px_rgba(251,191,36,0.2)] hover:shadow-[0_12px_28px_rgba(251,191,36,0.3)] transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0"
+                aria-label="Falar com a WM no WhatsApp"
+              >
+                <MessageCircle className="w-4 h-4" />
+                <span>Falar com a WM</span>
+              </a>
+
+              {/* Mobile menu trigger */}
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="lg:hidden p-2.5 text-wm-black hover:bg-wm-yellow/10 rounded-xl transition"
+                aria-label="Abrir menu de navegação"
+              >
+                {mobileMenuOpen ? (
+                  <X className="w-6 h-6" />
+                ) : (
+                  <Menu className="w-6 h-6" />
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile Drawer */}
+      <div
+        className={`fixed inset-0 z-40 bg-wm-black/60 backdrop-blur-sm lg:hidden transition-opacity duration-300 ${
+          mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+        onClick={() => setMobileMenuOpen(false)}
+      >
+        <div
+          className={`fixed top-0 right-0 w-4/5 max-w-sm h-full bg-wm-cream shadow-2xl p-6 flex flex-col justify-between transition-transform duration-300 transform ${
+            mobileMenuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div>
+            <div className="flex items-center justify-between pb-6 border-b border-wm-border">
+              <div className="relative h-10 w-28">
+                <Image
+                  src="/images/brand/logo-wm.png"
+                  alt="WM Distribuidora"
+                  fill
+                  className="object-contain object-left"
+                />
+              </div>
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-2 text-wm-black hover:bg-wm-yellow/10 rounded-lg"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="flex flex-col gap-1 py-6">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-4 py-3 text-base font-semibold text-wm-black hover:text-wm-yellow hover:bg-wm-yellow/10 rounded-xl transition"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div className="space-y-4 pt-6 border-t border-wm-border">
+            <div className="flex items-center gap-2 text-xs text-wm-text-muted">
+              <Sparkles className="w-4 h-4 text-wm-yellow" />
+              <span>Cariacica: Santana & Cruzeiro do Sul</span>
+            </div>
+            <a
+              href={COMPANY_INFO.whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 w-full py-3.5 px-4 rounded-xl bg-wm-yellow text-wm-black font-semibold text-sm shadow-md hover:bg-wm-yellow-light transition-colors"
+            >
+              <MessageCircle className="w-5 h-5" />
+              <span>Atendimento WhatsApp</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}

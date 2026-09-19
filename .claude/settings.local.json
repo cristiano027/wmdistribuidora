@@ -1,0 +1,40 @@
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "http://localhost:20128",
+    "ANTHROPIC_AUTH_TOKEN": "sk-ba082a34377cae68-d32c04-2a04b229",
+    "ANTHROPIC_MODEL": "combo/gratis"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p .claude/skills \"C:/Users/crist/.claude/skills\")",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:github.com)",
+      "Bash(git clone *)",
+      "Bash(cp -r temp_matt_skills/skills/productivity/grill-me .claude/skills/)",
+      "Bash(cp -r temp_matt_skills/skills/productivity/grilling .claude/skills/)",
+      "Bash(cp -r temp_ui_skills/.claude/skills/* .claude/skills/)",
+      "Bash(cp -r temp_matt_skills/skills/productivity/grill-me \"C:/Users/crist/.claude/skills/\")",
+      "Bash(cp -r temp_matt_skills/skills/productivity/grilling \"C:/Users/crist/.claude/skills/\")",
+      "Bash(curl -sL https://raw.githubusercontent.com/21st-dev/magic-mcp/main/skills/21st-ui/SKILL.md -o temp_21st.md)",
+      "Bash(curl -sL https://raw.githubusercontent.com/anthropics/claude-code/main/plugins/frontend-design/skills/frontend-design/SKILL.md -o temp_frontend.md)",
+      "Bash(mkdir -p .claude/skills/21st-ui .claude/skills/frontend-design \"C:/Users/crist/.claude/skills/21st-ui\" \"C:/Users/crist/.claude/skills/frontend-design\")",
+      "Bash(cp temp_21st.md .claude/skills/21st-ui/SKILL.md)",
+      "Bash(cp temp_21st.md \"C:/Users/crist/.claude/skills/21st-ui/SKILL.md\")",
+      "Bash(cp temp_frontend.md .claude/skills/frontend-design/SKILL.md)",
+      "Bash(cp temp_frontend.md \"C:/Users/crist/.claude/skills/frontend-design/SKILL.md\")",
+      "Bash(ls -la .claude/skills \"C:/Users/crist/.claude/skills\")",
+      "Read(//c/Users/crist/.claude/skills/**)",
+      "WebSearch",
+      "WebFetch(domain:www.wmfesta.com.br)",
+      "WebFetch(domain:wmfesta.com.br)",
+      "Bash(npx --yes create-next-app@14 . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm)",
+      "Bash(npx --yes create-next-app@14 temp-app --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm)",
+      "Bash(cp -r temp-app/* .)",
+      "Bash(cp temp-app/.* .)",
+      "Bash(rm -rf temp-app)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\crist\\OneDrive\\Documentos\\Programação\\teste1\\.claude"
+    ]
+  }
+}
